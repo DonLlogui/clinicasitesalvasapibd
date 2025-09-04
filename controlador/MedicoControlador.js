@@ -30,7 +30,7 @@ const MedicoControlador = {
 
     // POST /medicos
     async crear(req, res) {
-        const { nombre, especialidad, telefono, correo, direccion } = req.body;
+        const { t1: nombre, t2: especialidad, t3: telefono, t4: correo, t5: direccion } = req.body;
         if (!nombre || !especialidad || !telefono || !correo || !direccion) {
             return res.status(400).json({ mensaje: 'Todos los campos son obligatorios' });
         }

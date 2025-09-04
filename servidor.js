@@ -1,11 +1,13 @@
 // app.js
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const medicoRoutes = require('./vista/MedicoRutas'); // Ajusta la ruta si es necesario
 
 // Middlewares
-app.use(express.json()); // Para leer JSON en las peticiones
-
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Rutas
 app.use('/medicos', medicoRoutes);
 
@@ -15,7 +17,7 @@ app.get('/', (req, res) => {
 });
 
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
