@@ -48,7 +48,8 @@ const MedicoControlador = {
     // PUT /medicos/:id
     async actualizar(req, res) {
         const { id } = req.params;
-        const datos = req.body;
+        const { t1: nombre, t2: especialidad, t3: telefono, t4: correo, t5: direccion } = req.body;
+        const datos = new Medico(nombre, especialidad, telefono, correo, direccion);
 
         if (Object.keys(datos).length === 0) {
             return res.status(400).json({ mensaje: 'No hay datos para actualizar' });
